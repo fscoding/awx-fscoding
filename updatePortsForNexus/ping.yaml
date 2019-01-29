@@ -1,6 +1,6 @@
 ---
 - name: Ping the system
   hosts: all
-  tasts:
+  tasks:
     - name: ping the systems
       ping:
