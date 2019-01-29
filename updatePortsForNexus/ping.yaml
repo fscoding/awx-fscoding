@@ -1,0 +1,6 @@
+---
+- name: Ping the system
+  hosts: all
+  tasts:
+    - name: ping the systems
+      ping:
