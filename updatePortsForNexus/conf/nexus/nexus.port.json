@@ -1,0 +1,9 @@
+{
+  "insecure-registries" : [
+	"192.168.3.56:8085",
+	"nexus.fscoding.com:8085",
+	"nexus.fscoding:8822",
+	"192.168.3.56:8822",
+	"nexus.fscoding.com:8821"
+  ]
+}

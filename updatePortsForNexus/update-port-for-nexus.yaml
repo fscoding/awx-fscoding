@@ -1,0 +1,14 @@
+---
+- name: Ping the system
+  hosts: all
+  tasks:
+
+    - name: copy file to remote system
+      copy:
+        src: conf/nexus/nexus.port.json
+        dest: /etc/docker/daemon.json
+
+    - name: reload the Docker on remote system
+      systemd:
+        name: docker
+        state: reloaded

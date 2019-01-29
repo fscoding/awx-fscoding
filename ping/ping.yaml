@@ -1,0 +1,6 @@
+---
+- name: ping remote system
+  hosts: all
+  tasks:
+    - name: ping remote systems
+      ping:
