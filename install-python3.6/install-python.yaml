@@ -1,0 +1,35 @@
+---
+- name: Install Python3.6 on server
+  hosts: all
+  tasks:
+
+    - name: Install the necessary utilities
+      yum: pkg={{ item }} state=installed
+      with_items:
+        - epel-release
+        - yum-utils
+      when: ansible_distribution == "CentOS"
+      become: yes
+
+    - name: Installing Development tools
+      yum:
+        name: "@Development tools"
+        state: present
+      when: ansible_distribution == "CentOS"
+      become: yes
+
+    - name: install the nginx rpm from a remote repo
+      yum:
+        name: https://centos7.iuscommunity.org/ius-release.rpm
+        state: present
+      when: ansible_distribution == "CentOS"
+      become: yes
+
+    - name: Installing python3.6
+      yum: pkg={{ item }} state=installed
+      with_items:
+        - python36u
+        - python36u-pip
+        - python36u-devel
+      when: ansible_distribution == "CentOS"
+      become: yes

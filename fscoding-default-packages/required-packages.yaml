@@ -1,0 +1,22 @@
+---
+- name: Ping the system
+  hosts: all
+  tasks:
+
+    - name: Centos 7 Installing required packages on remote servers
+      yum: pkg={{ item }} state=installed
+      with_items:
+        - vim
+        - epel-release
+        - telnet
+      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == '7'
+
+    - name: Ubuntu Installing required packages on remote servers
+      apt:
+        name: "{{ packages }}"
+      vars:
+        packages:
+          - vim
+          - epel-release
+          - telnet
+      when: ansible_facts['os_family'] == "Debian"
